@@ -484,7 +484,7 @@ footer {
 .timeline-container::before {
   content: '';
   position: absolute;
-  left: 6px;
+  left: 0;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -546,7 +546,7 @@ footer {
 .education-container::before {
   content: '';
   position: absolute;
-  left: 6px;
+  left: 0;
   top: 0;
   bottom: 0;
   width: 2px;
