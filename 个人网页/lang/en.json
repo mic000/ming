@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Portfolio",
+    "timeline": "Timeline",
+    "education": "Education",
+    "skills": "Tech Stack",
+    "contact": "Contact"
+  },
+
+
+  "intro": {
+    "avatarAlt": "Ming's avatar",
+    "title": "Hello, I'm Ming",
+    "desc": "I am currently pursuing a Master's degree in Applied Data Science at the UVic. <br><br>My work and research interests on data science, machine learning, and biostatistics. <br>My projects related to large-scale data analysis and applied statistical modeling."
+  },
+
+
+  "projects": {
+    "title": "\uD83D\uDCF0My Projects",
+    "imgAlt": "Project image",
+    "viewDetail": "View Details",
+    "item1": {
+      "title": "PIMS VXML Biostatistics Research Project",
+      "desc": "Explore and process new statistical methods for zero values in microbiome data, and evaluate popular imputation methods in the mainstream of biology",
+      "tags": ["Phylogenetic Analysis", "Compositional Data", "Statistical Analysis", "16S rRNA Sequencing"]
+    }
+  },
+
+
+
+  "project1": {
+    "title": "A Novel Statistical Method for Handling Zeros in Microbiome Data",
+    "desc": "In this study, I designed and implemented simulation experiments for biological data to systematically evaluate and compare four widely used imputation methods. The evaluation was conducted using a range of statistical and machine learning metrics, including reconstruction error and ecological diversity preservation, to assess the performance of each method under complex biological data settings.<br><br>The entire research workflow was built as an end-to-end analysis pipeline using Python and R, incorporating compositional data analysis and phylogenetic distance matrix computation. In addition, I incorporated multiple complex parameters into the biostatistical simulation models to examine their simulation fidelity and computational efficiency, as well as to explore strategies for improving model runtime performance.",
+    "links": {
+      "poster": "Project's Poster",
+      "techDoc": "Project's Report"
+    }
+  },
+
+
+  "timeline": {
+    "title": "\uD83D\uDCBCTimeline",
+    "event1": {
+      "date": "Jul 2022 - Dec 2022",
+      "title": "Supply Chain Business Data Analyst Intern",
+      "loc": "\uD83D\uDCCDSaskatoon, Canada",
+      "desc": "Focused on supporting inventory and logistics decision optimization. Designed and automated multi-source ETL data pipelines, integrating Resource Planning, Warehouse Management System, and transportation system data to ensure data consistency and Service Level Agreement compliance. <br><br>Built KPI reports and dashboards based on time series forecasting and classification models, reducing inventory holding costs by 18%. Combined Geographic Information System route optimization with replenishment strategy A/B testing to optimize logistics and inventory planning, shortening delivery cycles and reducing transportation costs by 15%. "
+    },
+   "event2": {
+      "date": "Feb 2024 - Apr 2024",
+      "title": "Business Data Analyst Intern",
+      "loc": "\uD83D\uDCCDShanghai, China",
+      "desc": "Implemented a churn prediction pipeline covering over 30,000 customers, addressing class imbalance through down-sampling. Conducted exploratory data analysis, anomaly detection, and feature engineering, significantly improving data completeness and model stability. Performed comparative tuning and optimization, ultimately achieving 85% identification accuracy while maintaining a balance between precision and recall. <br><br>Presented the model outputs through Power BI dashboards for business presentation, directly supporting marketing and operations teams in developing targeted retention strategies. Combined with A/B testing, customer churn rate was reduced by 15% within 6 months."
+    },
+    "event3": {
+      "date": "Sep 2025 - Dec 2025",
+      "title": "Research Assistant",
+      "loc": "\uD83D\uDCCDCanada",
+      "desc": "Researched and analyzed imputation methods for highly sparse biological data. Collected and reviewed various published imputation methods, with a particular focus on exploring modeling approaches that integrate phylogenetic tree-related distance metrics. <br><br>Implemented a novel statistical imputation model that introduces biological prior structure into a latent variable modeling framework, significantly improving data reconstruction accuracy, feature interpretability, and effectively enhancing the computational efficiency of the imputation algorithm while maintaining model stability."
+    },
+    "event4": {
+      "date": "Sep 2024 - Dec 2025",
+      "title": "Data Analyst",
+      "loc": "\uD83D\uDCCDVancouver, Canada",
+      "desc": "Analyzed the accuracy of resume screening product, with core responsibilities focused on improving resume screening and job matching efficiency through data and algorithms. Lead an end-to-end Resume–Job Matching project, cleaning, standardizing, and performing text feature engineering. <br><br>Used Python, SQL, and NLP techniques, built a matching scoring model that improved job ranking precision by approximately 85% and reduced manual screening time."   }
+  },
+
+
+  "education": {
+    "title": "\uD83C\uDF93Education",
+    "event1": {
+      "date": "2020 - 2024",
+      "title": "University of Saskatchewan",
+      "url": "https://www.usask.ca/",
+      "loc": "\uD83D\uDCCDSaskatoon, Canada",
+      "desc": "Bachelor of Science in Statistics"
+    },
+    "event2": {
+      "date": "2026 - present",
+      "title": "University of Victoria",
+      "url": "https://www.uvic.ca/",
+      "loc": "\uD83D\uDCCDVictoria, Canada",
+      "desc": "Master of Engineering in Applied Data Science"
+    }
+  },
+
+  "skills": {
+    "title": "\uD83D\uDEE0\uFE0FTech Stack",
+    "MLOps": "Data Infra & MLOp",
+    "ML": "ML & Statistical Analysis",
+    "software": "Programming",
+    "tools": "Tools"
+  },
+
+
+  "contact": {
+    "title": "\uD83D\uDCC7Connect me",
+    "linkdin": "LinkedIn",
+    "github": "GitHub",
+    "email": "Email"
+  },
+
+
+  "footer": {
+    "copyright": "© 2026 Ming | Personal Homepage"
+  }
+}
