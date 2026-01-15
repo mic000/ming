@@ -436,7 +436,7 @@ footer {
 /* =========================================
    8. Mobile Responsive
    ========================================= */
-@media (max-width: 768px) {
+@media (max-width: 300px) {
   .nav-links { display: none; } /* 暂时简化手机端 */
   
   .intro { padding-top: 60px; }
