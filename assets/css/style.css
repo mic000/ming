@@ -436,7 +436,7 @@ footer {
 /* =========================================
    8. Mobile Responsive
    ========================================= */
-@media (max-width: 300px) {
+@media (max-width: 768px) {
   .nav-links { display: none; } /* 暂时简化手机端 */
   
   .intro { padding-top: 60px; }
@@ -484,7 +484,7 @@ footer {
 .timeline-container::before {
   content: '';
   position: absolute;
-  left: 0;
+  left: 6px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -546,7 +546,7 @@ footer {
 .education-container::before {
   content: '';
   position: absolute;
-  left: 0;
+  left: 6px;
   top: 0;
   bottom: 0;
   width: 2px;
