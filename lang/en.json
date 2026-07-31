@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About",
+    "recent": "Recent",
     "projects": "My Projects",
     "timeline": "Work Experience",
     "education": "Education",
@@ -13,13 +13,13 @@
   "intro": {
     "avatarAlt": "Ming's avatar",
     "title": "Hello, I'm Ming",
-    "desc": "I am currently pursuing a Master's degree in Applied Data Science at the University of Victoria. <br><br>My work and research interests focus on data science, machine learning, and biostatistics. My projects related to large-scale data analysis and applied statistical modeling."
+    "desc": "I am currently pursuing a Master's degree in Applied Data Science at the University of Victoria. My work and research interests focus on data science, machine learning, and microbial statistics. My projects related to large-scale data analysis and applied statistical modeling."
   },
 
 
-  "about": {
-    "title": "\uD83E\uDDED ",
-    "intro": "",
+  "recent": {
+    "title": "\uD83E\uDDED Highlights of the Year",
+    "intro": "Over the past year, I have developed practical skills in machine learning, natural language processing, and large-scale data modelling and analysis.<br><br>My projects cover several areas of applied data science. I developed statistical simulations in Python and R to compare imputation methods for sparse microbiome data. I built a cost-aware AI agent routing model using XGBoost and off-policy evaluation, maintaining about 93% of the best agent\u2019s merge rate at 71% of the cost. I also developed a fake-news classification pipeline using TF-IDF and Linear SVM, achieving 95.56% accuracy, and completed a local Gradio application for article prediction.<br><br>Other projects include implementing PCA from scratch for sentiment classification and building a PySpark ETL pipeline that transformed MovieLens data for Neo4j knowledge graphs and Power BI dashboards. These experiences have strengthened my ability to work with Python, R, SQL, PySpark, machine learning models, statistical evaluation, and end-to-end data pipelines.",
     "points": [
 
     ]
@@ -30,25 +30,35 @@
     "title": "\uD83D\uDCF0My Projects",
     "imgAlt": "Project image",
     "viewDetail": "View Details",
+    "categories": {
+      "ml": "Machine Learning & NLP",
+      "science": "Applied Data Science & Modeling",
+      "eng": "Data Engineering & Analytics"
+    },
     "item1": {
       "title": "PIMS VXML Biostatistics Research Project",
-      "date": "Dec 2025"
+      "date": "Dec 2025",
+      "summary": "Compared four imputation methods for sparse microbiome data through statistical simulation, evaluating reconstruction accuracy and ecological diversity preservation. Built an end-to-end Python and R pipeline incorporating phylogenetic distance information to improve model stability and efficiency."
     },
     "item5": {
-      "title": "Movie Knowledge Graph Analysis",
-      "date": "Mar 2026"
+      "title": "Movie-Genre Analysis",
+      "date": "Mar 2026",
+      "summary": "Built a PySpark ETL pipeline that cleaned and transformed about 100,000 MovieLens ratings into graph-ready and dashboard-ready outputs. Powered a Neo4j knowledge graph and Power BI dashboards, with automated data-quality statistics for reproducibility."
     },
     "item4": {
-      "title": "Sentiment Analysis Using PCA & SVM",
-      "date": "Apr 2026"
+      "title": "Sentiment Analysis of Product Reviews",
+      "date": "Apr 2026",
+      "summary": "Implemented PCA from scratch to test whether dimensionality reduction could improve TF-IDF and SVM sentiment classification on 3,000 customer reviews. Found that PCA reduced accuracy from 79% to as low as 72.67%, showing the sentiment signal was too distributed for this technique to help."
     },
     "item2": {
       "title": "Cost-Aware AgentRouter",
-      "date": "Jun 2026"
+      "date": "Jun 2026",
+      "summary": "Trained an XGBoost-based router to allocate coding tasks across five AI agents, evaluated with off-policy methods including inverse propensity scoring and doubly robust estimation. The learned policy kept about 93% of the best agent\u2019s merge rate at only 71% of the cost."
     },
     "item3": {
-      "title": "Fake News Identifier",
-      "date": "Jul 2026"
+      "title": "True/Fake News Judger",
+      "date": "Jul 2026",
+      "summary": "Built a TF-IDF and Linear SVM pipeline to classify news articles from the WELFake dataset, reaching 95.56% accuracy and an F1 score of 0.9498. Delivered a local Gradio app for real-time article predictions."
     }
   },
 
@@ -73,7 +83,7 @@
   },
 
   "project3": {
-    "title": "Fake News Identifier",
+    "title": "Identifying Fake News Through Text Mining and Model Comparison",
     "desc": "This team project built a machine learning pipeline to classify articles in the WELFake dataset as real or fake using only the title and article text. The original dataset contained 72,134 articles and was reduced to 62,590 complete, deduplicated records after cleaning. Author and source information were not used.<br><br>I am responsible for the core work in this project. I trained Linear SVM, Decision Tree, and Random Forest models using the team’s shared TF-IDF features. I also created confusion matrices, reviewed false-positive and false-negative cases, and compared each model with the Logistic Regression baseline.<br><br>Using combined title and body text with TF-IDF unigrams and bigrams, Linear SVM gave the best result, reaching 95.56% accuracy and an F1 score of 0.9498. Random Forest achieved 93.47% accuracy, while Decision Tree reached 88.70%. Linear SVM and Logistic Regression misclassified 235 of the same articles, suggesting that the two linear models struggled with similar difficult cases.<br><br>The full pipeline and a local Gradio prediction app have been completed. The final report is still being prepared, so the project repository currently contains the most complete results.",
     "links": {
       "repo": "View on GitHub"
@@ -81,7 +91,7 @@
   },
 
   "project4": {
-    "title": "Customers' Sentimental Reviews Classification",
+    "title": "Predicting Market Trends Through Sentiment Analysis of Product Reviews",
     "desc": "This project built a complete sentiment classification pipeline using the UCI Sentiment Labelled Sentences dataset. The dataset contains 3,000 reviews from Amazon, IMDB, and Yelp, with an equal number from each source. After cleaning, the text was converted into 2,097 TF-IDF features. A linear SVM was tuned using 5-fold stratified cross-validation and achieved an average validation accuracy of 80.46% at (C = 0.5).<br><br>The main goal was to test whether PCA could improve the model by reducing the number of features. PCA was implemented in NumPy and checked against the scikit-learn version. Without PCA, the TF-IDF and SVM model achieved 79.00% test accuracy. Reducing the data to 450 dimensions lowered accuracy to 73.33%, while 600 dimensions resulted in 72.67%.<br><br>The results showed that PCA was not suitable for this task. Important sentiment information was spread across many words rather than a small number of main components. As a result, reducing the dimensions removed useful information. PCA also converted the sparse TF-IDF matrix into a dense matrix, which increased training time without improving accuracy.",
     "links": {
       "report": "Read the Full Report (PDF)",
@@ -90,7 +100,7 @@
   },
 
   "project5": {
-    "title": "Movie Knowledge Graph Analysis",
+    "title": "Cinematic Insights: Market Intelligence Driven by Movie Classification & Ratings",
     "desc": "This project developed a PySpark ETL pipeline for the MovieLens Latest Small dataset, which includes about 100,000 ratings, 3,600 tags, 9,700 movies, and 600 users. The cleaned data was exported in two formats. Six CSV files were prepared for a Neo4j graph connecting users, movies, tags, and genres, while three summary tables were created for Power BI dashboards.<br><br>The pipeline cleaned data types, removed duplicates, extracted release years from movie titles, and split multiple genres into separate rows. It also removed low-quality records with no release year, genre, or user tags and manually corrected several known data issues before export.<br><br>Key statistics, including row counts, genre distribution, top-rated movies, active users, and common tags, were automatically saved to a text file so the results could be checked and reproduced.",
     "links": {
       "repo": "View on GitHub"

@@ -254,6 +254,7 @@ nav {
   color: var(--text-muted);
   max-width: 700px;
   margin: 0 auto;
+  text-align: left;
 }
 
 /* =========================================
@@ -280,9 +281,50 @@ h2::after {
 }
 
 .projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.project-category-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.project-category-title::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow, rgba(0,0,0,0.05));
+}
+
+.projects-subgrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+  gap: 32px 40px;
+  align-items: start;
+}
+
+.project-card-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.project-summary {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding: 0 4px;
 }
 
 .card {
@@ -292,7 +334,7 @@ h2::after {
   overflow: hidden;
   transition: var(--transition-base);
   /* 解决 Safari 下圆角溢出问题 */
-  transform: translateZ(0); 
+  transform: translateZ(0);
 }
 
 .card:hover {
@@ -453,7 +495,7 @@ footer {
    ========================================= */
 @media (max-width: 768px) {
   .nav-links { display: none; } /* 暂时简化手机端 */
-  
+
   .intro { padding-top: 60px; }
   .gradient-text { font-size: 2.2rem; }
 
@@ -469,13 +511,13 @@ footer {
     margin: 20px auto;
     border-radius: 8px;
   }
-  
+
   .publish-links {
     flex-direction: column;
     border-radius: var(--radius-md);
     width: 100%;
   }
-  
+
   .contact-links {
     gap: 24px;
     flex-wrap: wrap;
@@ -657,7 +699,7 @@ footer {
   cursor: pointer;
   z-index: 10; /* 提高层级 */
   /* 确保按钮有足够空间容纳图标 */
-  width: 40px; 
+  width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -666,7 +708,7 @@ footer {
 
 /* 防止图标拦截鼠标事件，确保点击穿透到 button */
 .theme-toggle i {
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 /* 确保导航栏层级够高 */
@@ -690,25 +732,25 @@ nav {
 /* =========================================
    13. About This ePortfolio Section (New)
    ========================================= */
-.about-content {
+.recent-content {
   max-width: 760px;
   margin: 0 auto;
 }
 
-.about-intro {
+.recent-intro {
   font-size: 1.05rem;
   color: var(--text-muted);
   margin-bottom: 28px;
   line-height: 1.8;
 }
 
-.about-list {
+.recent-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.about-point {
+.recent-point {
   display: flex;
   align-items: flex-start;
   gap: 14px;
@@ -720,26 +762,26 @@ nav {
   transition: var(--transition-base);
 }
 
-.about-point:hover {
+.recent-point:hover {
   border-color: var(--primary);
   transform: translateX(4px);
   box-shadow: var(--shadow-card);
 }
 
-.about-point-icon {
+.recent-point-icon {
   flex-shrink: 0;
   margin-top: 4px;
   color: var(--primary);
   font-size: 1rem;
 }
 
-.about-point span {
+.recent-point span {
   font-size: 0.98rem;
   color: var(--text-main);
   line-height: 1.7;
 }
 
-.about-point strong {
+.recent-point strong {
   color: var(--primary);
 }
 
@@ -775,5 +817,5 @@ nav {
 
 /* Adjust paragraph margin in project info to accommodate tags */
 .project-info p {
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 }

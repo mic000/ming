@@ -54,90 +54,128 @@ function initLangToggle() {
 
 // ... (Previous code remains the same)
 
-// ================= 0. About This ePortfolio 渲染 =================
+// ================= 0. Highlights of the Year 渲染 =================
 function initAbout() {
-  const container = document.querySelector('.about-content');
+  const container = document.querySelector('.recent-content');
   if (!container) return;
   container.innerHTML = ''; // 【关键】清空旧内容
 
-  const intro = window.i18n.get('about.intro');
-  const points = window.i18n.get('about.points');
+  const intro = window.i18n.get('recent.intro');
+  const points = window.i18n.get('recent.points');
 
   const pointsHtml = Array.isArray(points)
     ? points.map(p => `
-        <li class="about-point">
-          <i class="fa-solid fa-circle-check about-point-icon"></i>
+        <li class="recent-point">
+          <i class="fa-solid fa-circle-check recent-point-icon"></i>
           <span>${p}</span>
         </li>
       `).join('')
     : '';
 
   container.innerHTML = `
-    <p class="about-intro">${intro}</p>
-    <ul class="about-list">${pointsHtml}</ul>
+    <p class="recent-intro">${intro}</p>
+    <ul class="recent-list">${pointsHtml}</ul>
   `;
 }
 
-// ================= 1. 精选项目渲染 =================
+// ================= 1. 精选项目渲染（分类 + 摘要） =================
 function initProjects() {
   const grid = document.querySelector('.projects-grid');
   if (!grid) return;
   grid.innerHTML = ''; // 【关键】清空旧内容
 
-  const projects = [
+  const categories = [
     {
-      img: "assets/images/projects/fakenews-wordcloud.jpg",
-      titleKey: "projects.item3.title",
-      dateKey: "projects.item3.date",
-      link: "pages/projects/project3.html"
+      key: "ml",
+      items: [
+        {
+          img: "assets/images/projects/fakenews-wordcloud.jpg",
+          titleKey: "projects.item3.title",
+          dateKey: "projects.item3.date",
+          summaryKey: "projects.item3.summary",
+          link: "pages/projects/project3.html"
+        },
+        {
+          img: "assets/images/projects/sentiment-gauge.jpg",
+          titleKey: "projects.item4.title",
+          dateKey: "projects.item4.date",
+          summaryKey: "projects.item4.summary",
+          link: "pages/projects/project4.html"
+        }
+      ]
     },
     {
-      img: "assets/images/projects/agentrouter-fleet.jpg",
-      titleKey: "projects.item2.title",
-      dateKey: "projects.item2.date",
-      link: "pages/projects/project2.html"
+      key: "science",
+      items: [
+        {
+          img: "assets/images/projects/agentrouter-fleet.jpg",
+          titleKey: "projects.item2.title",
+          dateKey: "projects.item2.date",
+          summaryKey: "projects.item2.summary",
+          link: "pages/projects/project2.html"
+        },
+        {
+          img: "assets/images/projects/Microbiom_data.png",
+          titleKey: "projects.item1.title",
+          dateKey: "projects.item1.date",
+          summaryKey: "projects.item1.summary",
+          link: "pages/projects/project1.html"
+        }
+      ]
     },
     {
-      img: "assets/images/projects/sentiment-gauge.jpg",
-      titleKey: "projects.item4.title",
-      dateKey: "projects.item4.date",
-      link: "pages/projects/project4.html"
-    },
-    {
-      img: "assets/images/projects/movie-kg-schema.png",
-      titleKey: "projects.item5.title",
-      dateKey: "projects.item5.date",
-      link: "pages/projects/project5.html"
-    },
-    {
-      img: "assets/images/projects/Microbiom_data.png",
-      titleKey: "projects.item1.title",
-      dateKey: "projects.item1.date",
-      link: "pages/projects/project1.html"
+      key: "eng",
+      items: [
+        {
+          img: "assets/images/projects/movie-kg-schema.png",
+          titleKey: "projects.item5.title",
+          dateKey: "projects.item5.date",
+          summaryKey: "projects.item5.summary",
+          link: "pages/projects/project5.html"
+        }
+      ]
     }
   ];
 
-  projects.forEach(p => {
-    // 缩略图：图片优先，若无图片则使用图标占位
-    const thumbHtml = p.img
-      ? `<img src="${p.img}" alt="${window.i18n.get('projects.imgAlt')}" class="project-thumbnail">`
-      : `<div class="project-thumbnail project-thumbnail-icon"><i class="${p.icon}"></i></div>`;
+  categories.forEach(cat => {
+    const section = document.createElement('div');
+    section.className = 'project-category';
 
-    const linkAttrs = p.external ? `target="_blank" rel="noopener"` : '';
+    const heading = document.createElement('h3');
+    heading.className = 'project-category-title';
+    heading.textContent = window.i18n.get(`projects.categories.${cat.key}`);
+    section.appendChild(heading);
 
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div style="overflow:hidden;">
-        ${thumbHtml}
-      </div>
-      <div class="project-info">
-        <h3>${window.i18n.get(p.titleKey)}</h3>
-        <div class="project-date"><i class="fa-regular fa-calendar"></i> ${window.i18n.get(p.dateKey)}</div>
-        <a href="${p.link}" class="project-link" ${linkAttrs}>${window.i18n.get('projects.viewDetail')}</a>
-      </div>
-    `;
-    grid.appendChild(card);
+    const subGrid = document.createElement('div');
+    subGrid.className = 'projects-subgrid';
+
+    cat.items.forEach(p => {
+      const thumbHtml = p.img
+        ? `<img src="${p.img}" alt="${window.i18n.get('projects.imgAlt')}" class="project-thumbnail">`
+        : `<div class="project-thumbnail project-thumbnail-icon"><i class="${p.icon}"></i></div>`;
+
+      const linkAttrs = p.external ? `target="_blank" rel="noopener"` : '';
+
+      const wrap = document.createElement('div');
+      wrap.className = 'project-card-wrap';
+      wrap.innerHTML = `
+        <div class="card">
+          <div style="overflow:hidden;">
+            ${thumbHtml}
+          </div>
+          <div class="project-info">
+            <h3>${window.i18n.get(p.titleKey)}</h3>
+            <div class="project-date"><i class="fa-regular fa-calendar"></i> ${window.i18n.get(p.dateKey)}</div>
+            <a href="${p.link}" class="project-link" ${linkAttrs}>${window.i18n.get('projects.viewDetail')}</a>
+          </div>
+        </div>
+        <p class="project-summary">${window.i18n.get(p.summaryKey)}</p>
+      `;
+      subGrid.appendChild(wrap);
+    });
+
+    section.appendChild(subGrid);
+    grid.appendChild(section);
   });
 }
 
