@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // 2. 监听语言加载完成事件 (核心：重绘所有动态模块)
 window.addEventListener('i18nLoaded', () => {
   console.log('[main] i18n loaded, rendering content...');
+  initAbout();
   initProjects();
   initTimeline();
   initEducation();
-  initTechStack();
   initContactLinks();
 
 });
@@ -54,6 +54,30 @@ function initLangToggle() {
 
 // ... (Previous code remains the same)
 
+// ================= 0. About This ePortfolio 渲染 =================
+function initAbout() {
+  const container = document.querySelector('.about-content');
+  if (!container) return;
+  container.innerHTML = ''; // 【关键】清空旧内容
+
+  const intro = window.i18n.get('about.intro');
+  const points = window.i18n.get('about.points');
+
+  const pointsHtml = Array.isArray(points)
+    ? points.map(p => `
+        <li class="about-point">
+          <i class="fa-solid fa-circle-check about-point-icon"></i>
+          <span>${p}</span>
+        </li>
+      `).join('')
+    : '';
+
+  container.innerHTML = `
+    <p class="about-intro">${intro}</p>
+    <ul class="about-list">${pointsHtml}</ul>
+  `;
+}
+
 // ================= 1. 精选项目渲染 =================
 function initProjects() {
   const grid = document.querySelector('.projects-grid');
@@ -61,33 +85,56 @@ function initProjects() {
   grid.innerHTML = ''; // 【关键】清空旧内容
 
   const projects = [
-    { 
-      img: "assets/images/Portfolio-01.png", 
-      titleKey: "projects.item1.title", 
-      descKey: "projects.item1.desc",
-      tagsKey: "projects.item1.tags", // Added tags key
+    {
+      img: "assets/images/projects/fakenews-wordcloud.jpg",
+      titleKey: "projects.item3.title",
+      dateKey: "projects.item3.date",
+      link: "pages/projects/project3.html"
+    },
+    {
+      img: "assets/images/projects/agentrouter-fleet.jpg",
+      titleKey: "projects.item2.title",
+      dateKey: "projects.item2.date",
+      link: "pages/projects/project2.html"
+    },
+    {
+      img: "assets/images/projects/sentiment-gauge.jpg",
+      titleKey: "projects.item4.title",
+      dateKey: "projects.item4.date",
+      link: "pages/projects/project4.html"
+    },
+    {
+      img: "assets/images/projects/movie-kg-schema.png",
+      titleKey: "projects.item5.title",
+      dateKey: "projects.item5.date",
+      link: "pages/projects/project5.html"
+    },
+    {
+      img: "assets/images/projects/Microbiom_data.png",
+      titleKey: "projects.item1.title",
+      dateKey: "projects.item1.date",
       link: "pages/projects/project1.html"
     }
   ];
 
   projects.forEach(p => {
-    // 处理 Tags
-    const tags = window.i18n.get(p.tagsKey);
-    const tagsHtml = Array.isArray(tags) 
-      ? `<div class="project-tags">${tags.map(t => `<span class="project-tag">${t}</span>`).join('')}</div>`
-      : '';
+    // 缩略图：图片优先，若无图片则使用图标占位
+    const thumbHtml = p.img
+      ? `<img src="${p.img}" alt="${window.i18n.get('projects.imgAlt')}" class="project-thumbnail">`
+      : `<div class="project-thumbnail project-thumbnail-icon"><i class="${p.icon}"></i></div>`;
+
+    const linkAttrs = p.external ? `target="_blank" rel="noopener"` : '';
 
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
       <div style="overflow:hidden;">
-        <img src="${p.img}" alt="${window.i18n.get('projects.imgAlt')}" class="project-thumbnail">
+        ${thumbHtml}
       </div>
       <div class="project-info">
         <h3>${window.i18n.get(p.titleKey)}</h3>
-        <p>${window.i18n.get(p.descKey)}</p>
-        ${tagsHtml}
-        <a href="${p.link}" class="project-link">${window.i18n.get('projects.viewDetail')}</a>
+        <div class="project-date"><i class="fa-regular fa-calendar"></i> ${window.i18n.get(p.dateKey)}</div>
+        <a href="${p.link}" class="project-link" ${linkAttrs}>${window.i18n.get('projects.viewDetail')}</a>
       </div>
     `;
     grid.appendChild(card);
@@ -147,81 +194,6 @@ function initEducation() {
       </div>
     `;
     container.appendChild(item);
-  });
-}
-
-// ================= 4. 技术栈渲染 =================
-function initTechStack() {
-  const container = document.querySelector('.skills-wrapper');
-  if (!container) return;
-  container.innerHTML = ''; // 【关键】清空
-
-  const stack = [
-    {
-      category: "skills.MLOps",
-      items: [
-        { name: "AWS", icon: "fa-brands fa-aws" },
-        { name: "BigQuery", icon: "fa-solid fa-database" },
-        { name: "Vertex AI", icon: "fa-solid fa-brain" },
-        { name: "Azure", icon: "fa-brands fa-microsoft" },
-        { name: "Airflow", icon: "fa-solid fa-wind" },
-        { name: "MLflow", icon: "fa-solid fa-route" },
-        { name: "Kubernetes", icon: "fa-solid fa-network-wired" }
-      ]
-    },
-    {
-      category: "skills.ML",
-      items: [
-        { name: "NLP", icon: "fa-solid fa-comment-dots" },
-        { name: "LLMs", icon: "fa-solid fa-brain" },
-        { name: "PCA", icon: "fa-solid fa-compress" },
-        { name: "A/B Testing", icon: "fa-solid fa-flask" },
-        { name: "SHAP", icon: "fa-solid fa-magnifying-glass-chart" },
-        { name: "Regression", icon: "fa-solid fa-square-poll-vertical" },
-        { name: "Causal Inference", icon: "fa-solid fa-link" },
-        { name: "Decision Tree", icon: "fa-solid fa-diagram-project" },
-        { name: "Random Forest", icon: "fa-solid fa-tree" }
-      ]
-    },
-    {
-      category: "skills.software",
-      items: [
-        { name: "Python", icon: "fa-brands fa-python" },
-        { name: "R", icon: "fa-brands fa-r-project" },
-        { name: "SQL", icon: "fa-solid fa-database" },
-        { name: "NumPy", icon: "fa-solid fa-square-root-variable" },
-        { name: "scikit-learn", icon: "fa-solid fa-robot" },
-        { name: "Git", icon: "fa-brands fa-git-alt" },
-        { name: "Docker", icon: "fa-brands fa-docker" },
-        { name: "PyTorch", icon: "fa-solid fa-fire" },
-        { name: "TensorFlow", icon: "fa-solid fa-brain" },
-        { name: "Matplotlib", icon: "fa-solid fa-chart-simple" },
-        { name: "dplyr", icon: "fa-solid fa-filter" },
-        { name: "tidyverse", icon: "fa-solid fa-layer-group" },
-        { name: "ggplot2", icon: "fa-solid fa-chart-area" }
-      ]
-    },
-    {
-      category: "skills.tools",
-      items: [
-        { name: "Tableau", icon: "fa-solid fa-table" },
-        { name: "Power BI", icon: "fa-solid fa-chart-column" },
-        { name: "Excel (VBA)", icon: "fa-solid fa-file-excel" },
-        { name: "SAS", icon: "fa-solid fa-chart-bar" },
-        { name: "Salesforce", icon: "fa-brands fa-salesforce" }
-      ]
-    }
-  ];
-
-  stack.forEach(group => {
-    const itemsHtml = group.items.map(s => `
-      <div class="skill-badge"><i class="${s.icon}"></i> ${s.name}</div>
-    `).join('');
-    
-    const col = document.createElement('div');
-    col.className = 'skill-category';
-    col.innerHTML = `<h3>${window.i18n.get(group.category)}</h3><div class="skill-list">${itemsHtml}</div>`;
-    container.appendChild(col);
   });
 }
 

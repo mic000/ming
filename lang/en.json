@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "Home",
-    "projects": "Portfolio",
-    "timeline": "Timeline",
+    "about": "About",
+    "projects": "My Projects",
+    "timeline": "Work Experience",
     "education": "Education",
-    "skills": "Tech Stack",
+    "resume": "Resume",
     "contact": "Contact"
   },
 
@@ -16,14 +17,38 @@
   },
 
 
+  "about": {
+    "title": "\uD83E\uDDED ",
+    "intro": "",
+    "points": [
+
+    ]
+  },
+
+
   "projects": {
     "title": "\uD83D\uDCF0My Projects",
     "imgAlt": "Project image",
     "viewDetail": "View Details",
     "item1": {
       "title": "PIMS VXML Biostatistics Research Project",
-      "desc": "Explore and process new statistical methods for zero values in microbiome data, and evaluate popular imputation methods in the mainstream of biology",
-      "tags": ["Phylogenetic Analysis", "Compositional Data", "Statistical Analysis", "16S rRNA Sequencing"]
+      "date": "Dec 2025"
+    },
+    "item5": {
+      "title": "Movie Knowledge Graph Analysis",
+      "date": "Mar 2026"
+    },
+    "item4": {
+      "title": "Sentiment Analysis Using PCA & SVM",
+      "date": "Apr 2026"
+    },
+    "item2": {
+      "title": "Cost-Aware AgentRouter",
+      "date": "Jun 2026"
+    },
+    "item3": {
+      "title": "Fake News Identifier",
+      "date": "Jul 2026"
     }
   },
 
@@ -38,32 +63,67 @@
     }
   },
 
+  "project2": {
+    "title": "Cost-Aware AgentRouter: A Cheaper Coding-Agent Frontier",
+    "desc": "This project examined whether routing coding tasks across multiple AI agents, including Codex, Copilot, Cursor, Devin, and Claude Code, could reduce cost while maintaining the pull request merge rate.<br><br>A balanced sample of 25,580 pull requests was created from the full AIDev dataset of about 932,000 pull requests, with 5,116 samples for each agent. An XGBoost regression model was trained using task features and agent identity. Routing policies were evaluated using the direct method, inverse propensity scoring, doubly robust estimation, and bootstrap testing.<br><br>The results showed that the best agent could not be clearly identified based only on merge success. A simple estimate ranked Codex first, while the adjusted estimate favored the learned routing model. However, the difference remained within the range of estimation uncertainty because agent assignments were strongly affected by selection bias.<br><br>The clearest improvement came from cost reduction. Under the selected cost assumptions, only Codex and Copilot were cost-efficient. The routing model assigned suitable tasks to the cheaper Copilot while keeping more difficult tasks with Codex. It maintained about 93 percent of the best agent’s merge rate at only 71 percent of the cost. The result remained significant under paired and two-level bootstrap tests.",
+    "links": {
+      "report": "Read the Full Report",
+      "poster": "View Poster"
+    }
+  },
+
+  "project3": {
+    "title": "Fake News Identifier",
+    "desc": "This team project built a machine learning pipeline to classify articles in the WELFake dataset as real or fake using only the title and article text. The original dataset contained 72,134 articles and was reduced to 62,590 complete, deduplicated records after cleaning. Author and source information were not used.<br><br>I am responsible for the core work in this project. I trained Linear SVM, Decision Tree, and Random Forest models using the team’s shared TF-IDF features. I also created confusion matrices, reviewed false-positive and false-negative cases, and compared each model with the Logistic Regression baseline.<br><br>Using combined title and body text with TF-IDF unigrams and bigrams, Linear SVM gave the best result, reaching 95.56% accuracy and an F1 score of 0.9498. Random Forest achieved 93.47% accuracy, while Decision Tree reached 88.70%. Linear SVM and Logistic Regression misclassified 235 of the same articles, suggesting that the two linear models struggled with similar difficult cases.<br><br>The full pipeline and a local Gradio prediction app have been completed. The final report is still being prepared, so the project repository currently contains the most complete results.",
+    "links": {
+      "repo": "View on GitHub"
+    }
+  },
+
+  "project4": {
+    "title": "Customers' Sentimental Reviews Classification",
+    "desc": "This project built a complete sentiment classification pipeline using the UCI Sentiment Labelled Sentences dataset. The dataset contains 3,000 reviews from Amazon, IMDB, and Yelp, with an equal number from each source. After cleaning, the text was converted into 2,097 TF-IDF features. A linear SVM was tuned using 5-fold stratified cross-validation and achieved an average validation accuracy of 80.46% at (C = 0.5).<br><br>The main goal was to test whether PCA could improve the model by reducing the number of features. PCA was implemented in NumPy and checked against the scikit-learn version. Without PCA, the TF-IDF and SVM model achieved 79.00% test accuracy. Reducing the data to 450 dimensions lowered accuracy to 73.33%, while 600 dimensions resulted in 72.67%.<br><br>The results showed that PCA was not suitable for this task. Important sentiment information was spread across many words rather than a small number of main components. As a result, reducing the dimensions removed useful information. PCA also converted the sparse TF-IDF matrix into a dense matrix, which increased training time without improving accuracy.",
+    "links": {
+      "report": "Read the Full Report (PDF)",
+      "repo": "View on GitHub"
+    }
+  },
+
+  "project5": {
+    "title": "Movie Knowledge Graph Analysis",
+    "desc": "This project developed a PySpark ETL pipeline for the MovieLens Latest Small dataset, which includes about 100,000 ratings, 3,600 tags, 9,700 movies, and 600 users. The cleaned data was exported in two formats. Six CSV files were prepared for a Neo4j graph connecting users, movies, tags, and genres, while three summary tables were created for Power BI dashboards.<br><br>The pipeline cleaned data types, removed duplicates, extracted release years from movie titles, and split multiple genres into separate rows. It also removed low-quality records with no release year, genre, or user tags and manually corrected several known data issues before export.<br><br>Key statistics, including row counts, genre distribution, top-rated movies, active users, and common tags, were automatically saved to a text file so the results could be checked and reproduced.",
+    "links": {
+      "repo": "View on GitHub"
+    }
+  },
+
 
   "timeline": {
-    "title": "\uD83D\uDCBCTimeline",
+    "title": "\uD83D\uDCBCWork Experience",
     "event1": {
       "date": "Jul 2022 - Dec 2022",
       "title": "Supply Chain Business Data Analyst Intern",
       "loc": "\uD83D\uDCCDSaskatoon, Canada",
-      "desc": "Focused on supporting inventory and logistics decision optimization. Designed and automated multi-source ETL data pipelines, integrating Resource Planning, Warehouse Management System, and transportation system data to ensure data consistency and Service Level Agreement compliance. <br><br>Built KPI reports and dashboards based on time series forecasting and classification models, reducing inventory holding costs by 18%. Combined Geographic Information System route optimization with replenishment strategy A/B testing to optimize logistics and inventory planning, shortening delivery cycles and reducing transportation costs by 15%. "
+      "desc": "Automated ETL pipelines integrating ERP, warehouse, and transportation data to improve data consistency and SLA compliance.<br><br>Developed forecasting dashboards and route optimization analyses that reduced inventory costs by 18% and transportation costs and delivery time by 15%."
     },
    "event2": {
       "date": "Feb 2024 - Apr 2024",
       "title": "Business Data Analyst Intern",
       "loc": "\uD83D\uDCCDShanghai, China",
-      "desc": "Implemented a churn prediction pipeline covering over 30,000 customers, addressing class imbalance through down-sampling. Conducted exploratory data analysis, anomaly detection, and feature engineering, significantly improving data completeness and model stability. Performed comparative tuning and optimization, ultimately achieving 85% identification accuracy while maintaining a balance between precision and recall. <br><br>Presented the model outputs through Power BI dashboards for business presentation, directly supporting marketing and operations teams in developing targeted retention strategies. Combined with A/B testing, customer churn rate was reduced by 15% within 6 months."
-    },
+      "desc": "Built a churn prediction pipeline for over 30,000 customers using data cleaning, feature engineering, down-sampling, and model tuning, achieving 85% identification accuracy.<br><br>Created Power BI dashboards and supported targeted retention strategies and A/B testing, contributing to a 15% reduction in customer churn within six months."
+   },
     "event3": {
       "date": "Sep 2025 - Dec 2025",
       "title": "Research Assistant",
       "loc": "\uD83D\uDCCDCanada",
-      "desc": "Researched and analyzed imputation methods for highly sparse biological data. Collected and reviewed various published imputation methods, with a particular focus on exploring modeling approaches that integrate phylogenetic tree-related distance metrics. <br><br>Implemented a novel statistical imputation model that introduces biological prior structure into a latent variable modeling framework, significantly improving data reconstruction accuracy, feature interpretability, and effectively enhancing the computational efficiency of the imputation algorithm while maintaining model stability."
+      "desc": "Researched imputation methods for highly sparse biological data, with a focus on incorporating phylogenetic distance information.<br><br>Developed a statistical imputation model that improved reconstruction accuracy, interpretability, and computational efficiency while maintaining model stability."
     },
     "event4": {
       "date": "Sep 2024 - Dec 2025",
       "title": "Data Analyst",
       "loc": "\uD83D\uDCCDVancouver, Canada",
-      "desc": "Analyzed the accuracy of resume screening product, with core responsibilities focused on improving resume screening and job matching efficiency through data and algorithms. Lead an end-to-end Resume–Job Matching project, cleaning, standardizing, and performing text feature engineering. <br><br>Used Python, SQL, and NLP techniques, built a matching scoring model that improved job ranking precision by approximately 85% and reduced manual screening time."   }
+      "desc": "Led an end-to-end resume and job matching project, including data cleaning, text standardization, NLP feature engineering, and model development.<br><br>Built a Python and SQL-based matching model that improved job-matching rank precision by approximately 85% and reduced manual screening time."
+    }
   },
 
 
@@ -84,15 +144,6 @@
       "desc": "Master of Engineering in Applied Data Science"
     }
   },
-
-  "skills": {
-    "title": "\uD83D\uDEE0\uFE0FTech Stack",
-    "MLOps": "Data Infra & MLOp",
-    "ML": "ML & Statistical Analysis",
-    "software": "Programming",
-    "tools": "Tools"
-  },
-
 
   "contact": {
     "title": "\uD83D\uDCC7Contact me",
